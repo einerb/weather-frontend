@@ -4,9 +4,9 @@ Web app to show weather conditions by city. version 0.0.1.
 
 ## Specifications
 
-Angular 9.1.11
-Node 12.17.0
-Angular CLI 9.1.9
+Angular 9.1.11  
+Node 12.17.0  
+Angular CLI 9.1.9  
 Npm 6.14.4
 
 ## Preliminary steps
