@@ -1,3 +1,13 @@
+<!-- spinner -->
+<ngx-spinner
+  bdColor="rgba(0, 0, 0, 0.8)"
+  size="medium"
+  color="#fff"
+  type="pacman"
+  [fullScreen]="true"
+  ><p style="color: white;">Cargando...</p></ngx-spinner
+>
+
 <!-- navbar -->
 <nav
   class="navbar navbar-expand-lg navbar-light"
@@ -95,7 +105,8 @@
   </div>
 </header>
 
-<div class="container mt-5 mb-5">
+<!-- weather hourly -->
+<div class="container mt-5">
   <div class="row">
     <div class="col-5">
       <img
@@ -135,35 +146,143 @@
     </div>
   </div>
 
-  <div class="row">
-    <div class="col-12">
-      <ul id="timeline-wrap" style="padding-left: 0;">
-        <div id="timeline"></div>
+  <div class="d-flex justify-content-center">
+    <div id="timeline"></div>
+  </div>
+  <div class="d-flex justify-content-center">
+    <span class="mr-4 text-center">
+      {{ (weatherData?.hourly.data)[0].time * 1000 | date: "hh a" | lowercase
+      }}<br /><span style="font-size: 18px;"
+        >{{
+          (weatherData?.hourly.data)[0].temperature | number: "1.0-0"
+        }}°</span
+      >
+    </span>
+    <span class="mr-4 text-center">
+      {{ (weatherData?.hourly.data)[1].time * 1000 | date: "hh a" | lowercase
+      }}<br /><span style="font-size: 18px;"
+        >{{
+          (weatherData?.hourly.data)[1].temperature | number: "1.0-0"
+        }}°</span
+      >
+    </span>
+    <span class="mr-4 text-center">
+      {{ (weatherData?.hourly.data)[2].time * 1000 | date: "hh a" | lowercase
+      }}<br /><span style="font-size: 18px;"
+        >{{
+          (weatherData?.hourly.data)[2].temperature | number: "1.0-0"
+        }}°</span
+      >
+    </span>
+    <span class="mr-4 text-center">
+      {{ (weatherData?.hourly.data)[3].time * 1000 | date: "hh a" | lowercase
+      }}<br /><span style="font-size: 18px;"
+        >{{
+          (weatherData?.hourly.data)[3].temperature | number: "1.0-0"
+        }}°</span
+      >
+    </span>
+    <span class="mr-4 text-center">
+      {{ (weatherData?.hourly.data)[4].time * 1000 | date: "hh a" | lowercase
+      }}<br /><span style="font-size: 18px;"
+        >{{
+          (weatherData?.hourly.data)[4].temperature | number: "1.0-0"
+        }}°</span
+      >
+    </span>
+    <span class="mr-4 text-center">
+      {{ (weatherData?.hourly.data)[5].time * 1000 | date: "hh a" | lowercase
+      }}<br /><span style="font-size: 18px;"
+        >{{
+          (weatherData?.hourly.data)[5].temperature | number: "1.0-0"
+        }}°</span
+      >
+    </span>
+    <span class="mr-4 text-center">
+      {{ (weatherData?.hourly.data)[6].time * 1000 | date: "hh a" | lowercase
+      }}<br /><span style="font-size: 18px;"
+        >{{
+          (weatherData?.hourly.data)[6].temperature | number: "1.0-0"
+        }}°</span
+      >
+    </span>
+    <span class="mr-4 text-center">
+      {{ (weatherData?.hourly.data)[7].time * 1000 | date: "hh a" | lowercase
+      }}<br /><span style="font-size: 18px;"
+        >{{
+          (weatherData?.hourly.data)[7].temperature | number: "1.0-0"
+        }}°</span
+      >
+    </span>
+    <span class="mr-4 text-center">
+      {{ (weatherData?.hourly.data)[8].time * 1000 | date: "hh a" | lowercase
+      }}<br /><span style="font-size: 18px;"
+        >{{
+          (weatherData?.hourly.data)[8].temperature | number: "1.0-0"
+        }}°</span
+      >
+    </span>
+    <span class="mr-4 text-center">
+      {{ (weatherData?.hourly.data)[9].time * 1000 | date: "hh a" | lowercase
+      }}<br /><span style="font-size: 18px;"
+        >{{
+          (weatherData?.hourly.data)[9].temperature | number: "1.0-0"
+        }}°</span
+      >
+    </span>
+    <span class="mr-4 text-center">
+      {{ (weatherData?.hourly.data)[10].time * 1000 | date: "hh a" | lowercase
+      }}<br /><span style="font-size: 18px;"
+        >{{
+          (weatherData?.hourly.data)[10].temperature | number: "1.0-0"
+        }}°</span
+      >
+    </span>
+    <span class="text-center">
+      {{ (weatherData?.hourly.data)[11].time * 1000 | date: "hh a" | lowercase
+      }}<br /><span style="font-size: 18px;"
+        >{{
+          (weatherData?.hourly.data)[11].temperature | number: "1.0-0"
+        }}°</span
+      >
+    </span>
+  </div>
+</div>
 
-        <!-- This is the individual marker-->
-        <li class="marker mfirst timeline-icon one">
-          <i class="fa fa-pencil">A</i>
-        </li>
-        <!-- / marker -->
-
-        <!-- This is the individual marker-->
-        <li class="marker m2 timeline-icon two">
-          <i class="fa fa-usd">B</i>
-        </li>
-        <!-- / marker -->
-
-        <!-- This is the individual marker-->
-        <li class="marker m3 timeline-icon three">
-          <i class="fa fa-list">C</i>
-        </li>
-        <!-- / marker -->
-
-        <!-- This is the individual marker-->
-        <li class="marker mlast timeline-icon four">
-          <i class="fa fa-check">D</i>
-        </li>
-        <!-- / marker -->
-      </ul>
+<!-- weather daily -->
+<div class="container mb-5" style="margin-top: 5%;">
+  <p class="text-center" style="font-size: 28px; margin-bottom: 5%;">
+    {{ weatherData?.daily.summary }}
+  </p>
+  <div class="row" *ngFor="let item of weatherData?.daily.data">
+    <div class="col-md-2">
+      <img
+        src="https://darksky.net/images/weather-icons/{{ item.icon }}.png"
+        width="40"
+        height="40"
+        class="float-right mt-3"
+      />
+    </div>
+    <div class="col-md-2 font-weight-status">
+     <p class=" mt-3">{{ item.time * 1000 | date:'EEE' }}</p>
+    </div>
+    <div class="col-md-8">
+      <p class="text-center">{{ item.summary }}</p>
+      <div class="row">
+        <div class="col-md-1">{{ item.temperatureLow | number: "1.0-0" }}°</div>
+        <div class="col-md-10">
+          <div class="progress text-center">
+            <div
+              class="progress-bar bg-dark"
+              role="progressbar"
+              style="width: 100%;"
+            ></div>
+          </div>
+        </div>
+        <div class="col-md-1">
+          {{ item.temperatureHigh | number: "1.0-0" }}°
+        </div>
+      </div>
     </div>
   </div>
 </div>

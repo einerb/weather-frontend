@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 import { WeatherService } from '../../services/weather.service';
 
@@ -10,9 +11,13 @@ import { WeatherService } from '../../services/weather.service';
 export class HomeComponent implements OnInit {
   public weatherData;
 
-  constructor(private weatherService: WeatherService) {}
+  constructor(
+    private weatherService: WeatherService,
+    private spinnerService: NgxSpinnerService
+  ) {}
 
   ngOnInit(): void {
+    this.spinnerService.show();
     this.getWeather();
   }
 
@@ -21,7 +26,8 @@ export class HomeComponent implements OnInit {
       this.weatherData = res;
 
       console.log(this.weatherData);
-      
+
+      this.spinnerService.hide();
     });
   }
 }
