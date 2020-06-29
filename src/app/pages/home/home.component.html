@@ -255,7 +255,7 @@
     {{ weatherData?.daily.summary }}
   </p>
   <div class="row" *ngFor="let item of weatherData?.daily.data">
-    <div class="col-md-2">
+    <div class="col-md-1">
       <img
         src="https://darksky.net/images/weather-icons/{{ item.icon }}.png"
         width="40"
@@ -263,10 +263,10 @@
         class="float-right mt-3"
       />
     </div>
-    <div class="col-md-2 font-weight-status">
-     <p class=" mt-3">{{ item.time * 1000 | date:'EEE' }}</p>
+    <div class="col-md-1 font-weight-status">
+      <p class="mt-3">{{ item.time * 1000 | date: "EEE" }}</p>
     </div>
-    <div class="col-md-8">
+    <div class="col-md-10">
       <p class="text-center">{{ item.summary }}</p>
       <div class="row">
         <div class="col-md-1">{{ item.temperatureLow | number: "1.0-0" }}°</div>
