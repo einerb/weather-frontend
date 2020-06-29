@@ -1,0 +1,30 @@
+.form-inline input[type="text"] {
+  width: 600px;
+  border: none;
+  border-radius: 25px;
+}
+
+/* media querys to manage sizes according to the Chrome console */
+@media (max-width: 768px) {
+  .form-inline input[type="text"] {
+    width: 480px;
+  }
+}
+
+@media (max-width: 425px) {
+  .form-inline input[type="text"] {
+    width: 330px;
+  }
+}
+
+@media (max-width: 375px) {
+    .form-inline input[type="text"] {
+      width: 280px;
+    }
+  }
+
+@media (max-width: 320px) {
+  .form-inline input[type="text"] {
+    width: 220px;
+  }
+}
