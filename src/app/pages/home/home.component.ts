@@ -10,6 +10,7 @@ import { WeatherService } from '../../services/weather.service';
 })
 export class HomeComponent implements OnInit {
   public weatherData;
+  public dateNow;
 
   constructor(
     private weatherService: WeatherService,
@@ -19,6 +20,7 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     this.spinnerService.show();
     this.getWeather();
+    this.dateNow = Date.now();
   }
 
   private getWeather() {
