@@ -8,19 +8,17 @@ import { WeatherService } from '../../services/weather.service';
   styleUrls: ['./navbar.component.css'],
 })
 export class NavbarComponent implements OnInit {
-  public weatherData: any = {};
+  public weatherData;
 
   constructor(private weatherService: WeatherService) {}
 
   ngOnInit(): void {
-    this.getWeather('4.6021,-74.1026');
+    this.getWeather();
   }
 
-  private getWeather(location: string) {
-    this.weatherService.getByLocation(location).subscribe((res) => {
-      this.weatherData = res;
-
-      console.log(this.weatherData);
+  private getWeather() {
+    this.weatherService.getByLocation('4.6021,-74.1026').subscribe((res) => {
+      this.weatherData = res.currently;
     });
   }
 }

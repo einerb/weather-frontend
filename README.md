@@ -22,8 +22,7 @@ The following steps are considered to run our proxy server:
 5. add your DarkSky API key to .env: `DARK_SKY_SECRET=abcdefg`  
 6. start the server: `node index.js`
 
-When you access the root folder, run `npm install` and wait for it to download the packages needed for it to work properly.
-After that you can run the project.
+When you access the **root folder**, run `npm install` and wait for it to download the necessary packages to work properly. After that you can run the project.
 
 ## Run
 
