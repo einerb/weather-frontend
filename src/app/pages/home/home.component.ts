@@ -10,8 +10,13 @@ import { WeatherService } from '../../services/weather.service';
 })
 export class HomeComponent implements OnInit {
   public weatherData;
+  public coordinateData;
   public dateNow;
+  public city;
 
+  public submitted = false;
+
+  /* injection services */
   constructor(
     private weatherService: WeatherService,
     private spinnerService: NgxSpinnerService
@@ -19,16 +24,34 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.spinnerService.show();
-    this.getWeather();
-    this.dateNow = Date.now();
+    this.searchCity(this.city);
   }
 
-  private getWeather() {
-    this.weatherService.getByLocation('4.6021,-74.1026').subscribe((res) => {
+  /* method to obtain the coordinates of a city. */
+  public searchCity(city: string) {
+    /* convert input text to lowercase. */
+    let cityLowercase = city?.toLowerCase();
+
+    this.weatherService.getByCoordinate(cityLowercase).subscribe((res) => {
+      this.coordinateData = res.features;
+
+      /* method call and parameter passing. */
+      this.getWeather(
+        this.coordinateData[0].geometry.coordinates[1],
+        this.coordinateData[0].geometry.coordinates[0]
+      );
+
+      /* show spinner */
+      this.spinnerService.show();
+    });
+  }
+
+  /* method to obtain the climate of a city through its coordinates. */
+  private getWeather(lat: any, long: any) {
+    this.weatherService.getByLocation(lat, long).subscribe((res) => {
       this.weatherData = res;
 
-      console.log(this.weatherData);
-
+      /* Hidden spinner */
       this.spinnerService.hide();
     });
   }

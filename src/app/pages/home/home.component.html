@@ -1,9 +1,9 @@
 <!-- spinner -->
 <ngx-spinner
-  bdColor="rgba(0, 0, 0, 0.8)"
+  bdColor="rgba(0, 0, 0, 0.9)"
   size="medium"
   color="#fff"
-  type="pacman"
+  type="line-scale-pulse-out-rapid"
   [fullScreen]="true"
   ><p style="color: white;">Cargando...</p></ngx-spinner
 >
@@ -21,8 +21,14 @@
       <button type="button" class="btn btn-sm btn-light">
         <i class="fa fa-location-arrow"></i>
       </button>
-      <input class="form-control mr-sm-2 ml-sm-2" type="text" />
-      <button class="btn btn-sm btn-light" type="submit">
+      <input
+        class="form-control mr-sm-2 ml-sm-2 text-center"
+        type="text"
+        name="city"
+        #city
+        value="ATLANTICO"
+      />
+      <button class="btn btn-sm btn-light" (click)="searchCity(city.value)">
         <i class="fa fa-search"></i>
       </button>
     </form>
@@ -84,6 +90,7 @@
               <span class="font-weight-status">UV Index: </span>
               <span
                 *ngIf="
+                  weatherData?.currently.uvIndex === 0 ||
                   weatherData?.currently.uvIndex === 1 ||
                   weatherData?.currently.uvIndex === 2
                 "

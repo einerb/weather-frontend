@@ -10,9 +10,21 @@ import { GlobalService } from './global.service';
 export class WeatherService {
   constructor(private globalService: GlobalService) {}
 
-  public getByLocation(location: any) {
+  /* service to obtain the coordinates of a city through the MapBox API. */
+  public getByLocation(lat: any, long: any) {
     return this.globalService
-      .get(Constant.Endpoints.WEATHER.BASE + '/' + location)
+      .get(Constant.Endpoints.WEATHER.BASE + '/' + lat + ',' + long)
+      .pipe(
+        map((res) => {
+          return res;
+        })
+      );
+  }
+
+  /* service to obtain the climatic data of a city through the coordinates, consuming the DarkSky api. */
+  public getByCoordinate(city: any) {
+    return this.globalService
+      .get(Constant.Endpoints.MAPBOX.BASE + '/' + city + Constant.API_KEY)
       .pipe(
         map((res) => {
           return res;
